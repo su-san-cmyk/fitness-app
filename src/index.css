@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── 元HTMLのCSSをそのまま再現 ─────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f5f5f5;}
+.app{max-width:480px;margin:0 auto;padding-bottom:2rem;background:#fff;min-height:100vh;}
+.top-bar{background:#fff;border-bottom:0.5px solid #e0e0e0;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10;min-height:45px;}
+.top-bar h1{font-size:15px;font-weight:500;}
+.date-nav{display:flex;align-items:center;gap:5px;}
+.dnbtn{background:none;border:0.5px solid #ccc;border-radius:8px;padding:4px 10px;font-size:14px;cursor:pointer;line-height:1;}
+.date-nav span{font-size:12px;color:#888;min-width:84px;text-align:center;}
+.today-btn{font-size:11px;padding:4px 8px;background:#f5f5f5;border:0.5px solid #ddd;border-radius:8px;cursor:pointer;color:#666;white-space:nowrap;}
+.tab-bar{display:flex;border-bottom:0.5px solid #e0e0e0;background:#fff;position:sticky;top:45px;z-index:9;}
+.tab{flex:1;padding:10px 4px;text-align:center;font-size:12px;cursor:pointer;color:#999;border-bottom:2px solid transparent;white-space:nowrap;}
+.tab.active{color:#111;border-bottom-color:#111;font-weight:500;}
+.page{display:none;}.page.active{display:block;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:10px 10px 0;}
+.user-col{display:flex;flex-direction:column;gap:5px;}
+.col-header{display:flex;align-items:center;gap:6px;padding:7px 8px;background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;}
+.avatar{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;flex-shrink:0;}
+.av-a{background:#E1F5EE;color:#0F6E56;}
+.av-b{background:#FBEAF0;color:#993556;}
+.col-name{font-size:13px;font-weight:500;flex:1;}
+.streak-b{font-size:10px;color:#999;}
+.ex-item{display:flex;align-items:center;gap:6px;padding:9px 8px;background:#fff;border:0.5px solid #e0e0e0;border-radius:8px;cursor:pointer;user-select:none;}
+.ex-item.done{opacity:.4;}
+.check-box{width:20px;height:20px;border-radius:50%;border:1.5px solid #ccc;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .12s;}
+.chk-ex.checked{background:#1D9E75;border-color:#1D9E75;}
+.chk-fi.checked{background:#378ADD;border-color:#378ADD;}
+.ck-icon{width:9px;height:9px;fill:none;stroke:white;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.ex-name{font-size:11px;flex:1;line-height:1.4;}
+.fiber-item{display:flex;align-items:center;gap:6px;padding:9px 8px;background:#fff;border:0.5px solid #e0e0e0;border-radius:8px;cursor:pointer;user-select:none;}
+.week-badge-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 10px 0;}
+.week-badge-card{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:8px 10px;display:flex;align-items:center;gap:8px;}
+.week-ring{width:36px;height:36px;flex-shrink:0;}
+.week-info-name{font-size:11px;font-weight:500;}
+.week-info-sub{font-size:10px;color:#999;}
+.weekly-section{margin:8px 10px 0;padding:10px 12px;background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;}
+.weekly-badge{display:inline-flex;background:#FAEEDA;color:#854F0B;font-size:10px;padding:2px 7px;border-radius:8px;margin-bottom:8px;}
+.weekly-inner{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.wu-label{font-size:12px;font-weight:500;margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.wfield label{font-size:10px;color:#888;display:block;margin-bottom:2px;}
+.wfield input{width:100%;padding:6px 7px;font-size:13px;background:#f5f5f5;border:0.5px solid #ddd;border-radius:8px;color:#111;}
+.save-btn{width:100%;margin-top:8px;padding:10px;background:#fff;border:0.5px solid #ccc;border-radius:8px;font-size:13px;cursor:pointer;color:#111;}
+.save-btn:active{background:#f5f5f5;}
+.section{padding:10px;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.compare-card{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:10px 12px;}
+.compare-card h3{font-size:12px;font-weight:500;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
+.score-big{font-size:26px;font-weight:500;line-height:1;}
+.score-sub{font-size:11px;color:#999;margin-top:2px;margin-bottom:6px;}
+.prog-bg{background:#f0f0f0;border-radius:99px;height:5px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:99px;transition:width .3s;}
+.fill-teal{background:#1D9E75;}.fill-pink{background:#D4537E;}
+.graph-toggle{display:flex;gap:6px;margin-bottom:10px;}
+.gtab{padding:6px 14px;font-size:12px;border:0.5px solid #ddd;border-radius:99px;cursor:pointer;color:#999;background:#fff;}
+.gtab.active{background:#f0f0f0;color:#111;font-weight:500;border-color:#ccc;}
+.graph-col{display:flex;flex-direction:column;gap:10px;}
+.graph-card{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:12px 14px 10px;width:100%;}
+.graph-card-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:8px;}
+.graph-card-header h4{font-size:13px;font-weight:500;display:flex;align-items:center;gap:6px;}
+.graph-stats{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.graph-stat{font-size:10px;color:#999;}
+.graph-stat span{font-weight:500;color:#111;}
+.graph-wrap{position:relative;height:180px;width:100%;}
+.no-data{font-size:11px;color:#999;text-align:center;padding:40px 0;}
+.memo-section{padding:10px;}
+.chat-wrap{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:10px;min-height:160px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:8px;}
+.bubble{max-width:82%;padding:7px 11px;border-radius:13px;font-size:13px;line-height:1.5;}
+.bubble.me{align-self:flex-end;background:#1D9E75;color:white;border-bottom-right-radius:3px;}
+.bubble.other{align-self:flex-start;background:#f0f0f0;color:#111;border-bottom-left-radius:3px;}
+.bubble-who{font-size:10px;opacity:.7;margin-bottom:1px;}
+.bubble-time{font-size:10px;opacity:.6;text-align:right;margin-top:1px;}
+.memo-input-row{display:flex;gap:5px;}
+.memo-input-row select{padding:8px 5px;font-size:12px;border:0.5px solid #ddd;border-radius:8px;background:#f5f5f5;color:#111;max-width:72px;}
+.memo-input-row input{flex:1;padding:8px 9px;font-size:13px;border:0.5px solid #ddd;border-radius:8px;background:#f5f5f5;color:#111;}
+.memo-input-row button{padding:8px 12px;background:#1D9E75;color:white;border:none;border-radius:8px;font-size:13px;cursor:pointer;}
+.memo-input-row button:active{opacity:.8;}
+.settings-section{padding:10px;}
+.ex-settings-card{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:10px 12px;margin-bottom:8px;}
+.ex-settings-card h3{font-size:12px;font-weight:500;margin-bottom:8px;}
+.ex-goal-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.ex-goal-label{font-size:12px;flex:1;}
+.ex-goal-input{width:58px;padding:6px 7px;font-size:12px;border:0.5px solid #ddd;border-radius:8px;background:#f5f5f5;color:#111;text-align:right;}
+.ex-goal-unit{font-size:11px;color:#999;width:18px;}
+.settings-dual{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.settings-col{background:#fff;border:0.5px solid #e0e0e0;border-radius:12px;padding:10px 12px;}
+.settings-col h3{font-size:12px;font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:5px;flex-wrap:wrap;}
+.sl{font-size:10px;color:#888;margin-bottom:2px;}
+.si{width:100%;padding:6px 7px;font-size:12px;border:0.5px solid #ddd;border-radius:8px;background:#f5f5f5;color:#111;margin-bottom:6px;}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px;}
+.stat-item{background:#f5f5f5;border-radius:8px;padding:6px 8px;}
+.stat-label{font-size:9px;color:#999;margin-bottom:1px;}
+.stat-val{font-size:14px;font-weight:500;}
+.stat-unit{font-size:9px;color:#999;}
+.bmi-badge{display:inline-flex;padding:1px 6px;border-radius:8px;font-size:10px;font-weight:500;margin-top:2px;}
+.bmi-low{background:#E6F1FB;color:#185FA5;}
+.bmi-ok{background:#E1F5EE;color:#0F6E56;}
+.bmi-hi{background:#FAEEDA;color:#854F0B;}
+.bmi-vhi{background:#FCEBEB;color:#A32D2D;}
+
+/* recharts の余白調整 */
+.recharts-wrapper { font-size: 10px; }
